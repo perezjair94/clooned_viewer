@@ -14,11 +14,11 @@ import { Sidebar } from './sidebar.js';
 import { ThemeHandler } from './themehandler.js';
 import { ThreeModelLoaderUI } from './threemodelloaderui.js';
 import { Toolbar } from './toolbar.js';
-import { DownloadModel, ShowExportDialog } from './exportdialog.js';
-import { ShowSnapshotDialog } from './snapshotdialog.js';
+// import { DownloadModel, ShowExportDialog } from './exportdialog.js';
+// import { ShowSnapshotDialog } from './snapshotdialog.js';
 import { AddSvgIconElement, GetFilesFromDataTransfer, InstallTooltip, IsSmallWidth } from './utils.js';
 import { ShowOpenUrlDialog } from './openurldialog.js';
-import { ShowSharingDialog } from './sharingdialog.js';
+// import { ShowSharingDialog } from './sharingdialog.js';
 import { HasDefaultMaterial, ReplaceDefaultMaterialColor } from '../engine/model/modelutils.js';
 import { Direction } from '../engine/geometry/geometry.js';
 import { CookieGetBoolVal, CookieSetBoolVal } from './cookiehandler.js';
@@ -301,7 +301,7 @@ export class Website
         this.viewer.SetMainObject (threeObject);
         this.viewer.SetUpVector (Direction.Y, false);
         this.navigator.FillTree (importResult);
-        this.sidebar.UpdateControlsVisibility ();
+        // this.sidebar.UpdateControlsVisibility ();
         this.FitModelToWindow (true);
     }
 
@@ -689,44 +689,48 @@ export class Website
             this.cameraSettings.SaveToCookies ();
             this.viewer.SetNavigationMode (this.cameraSettings.navigationMode);
         });
-        AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
-        AddRadioButton (this.toolbar, ['camera_perspective', 'camera_orthographic'], ['Perspective camera', 'Orthographic camera'], projectionModeIndex, ['only_full_width', 'only_on_model'], (buttonIndex) => {
-            if (buttonIndex === 0) {
-                this.cameraSettings.projectionMode = ProjectionMode.Perspective;
-            } else if (buttonIndex === 1) {
-                this.cameraSettings.projectionMode = ProjectionMode.Orthographic;
-            }
-            this.cameraSettings.SaveToCookies ();
-            this.viewer.SetProjectionMode (this.cameraSettings.projectionMode);
-            this.sidebar.UpdateControlsVisibility ();
-        });
-        AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
-        let measureToolButton = AddPushButton (this.toolbar, 'measure', 'Measure', ['only_full_width', 'only_on_model'], (isSelected) => {
-            HandleEvent ('measure_tool_activated', isSelected ? 'on' : 'off');
-            this.navigator.SetSelection (null);
-            this.measureTool.SetActive (isSelected);
-        });
-        this.measureTool.SetButton (measureToolButton);
-        AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
-        AddButton (this.toolbar, 'download', 'Download', ['only_full_width', 'only_on_model'], () => {
-            HandleEvent ('model_downloaded', '');
-            let importer = this.modelLoaderUI.GetImporter ();
-            DownloadModel (importer);
-        });
-        AddButton (this.toolbar, 'export', 'Export', ['only_full_width', 'only_on_model'], () => {
-            ShowExportDialog (this.model, this.viewer, {
-                isMeshVisible : (meshInstanceId) => {
-                    return this.navigator.IsMeshVisible (meshInstanceId);
-                }
-            });
-        });
-        AddButton (this.toolbar, 'share', 'Share', ['only_full_width', 'only_on_model'], () => {
-            ShowSharingDialog (importer.GetFileList (), this.settings, this.viewer);
-        });
-        AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
-        AddButton (this.toolbar, 'snapshot', 'Create snapshot', ['only_full_width', 'only_on_model'], () => {
-            ShowSnapshotDialog (this.viewer);
-        });
+        // AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
+        // AddRadioButton (this.toolbar, ['embed-button'], ['Import to clooned'], projectionModeIndex, ['only_full_width', 'only_on_model'], (buttonIndex) => {
+        //     window.location.replace('https://clooned.com/');
+        // });
+        // AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
+        // AddRadioButton (this.toolbar, ['camera_perspective', 'camera_orthographic'], ['Perspective camera', 'Orthographic camera'], projectionModeIndex, ['only_full_width', 'only_on_model'], (buttonIndex) => {
+        //     if (buttonIndex === 0) {
+        //         this.cameraSettings.projectionMode = ProjectionMode.Perspective;
+        //     } else if (buttonIndex === 1) {
+        //         this.cameraSettings.projectionMode = ProjectionMode.Orthographic;
+        //     }
+        //     this.cameraSettings.SaveToCookies ();
+        //     this.viewer.SetProjectionMode (this.cameraSettings.projectionMode);
+        //     this.sidebar.UpdateControlsVisibility ();
+        // });
+        // AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
+        // let measureToolButton = AddPushButton (this.toolbar, 'measure', 'Measure', ['only_full_width', 'only_on_model'], (isSelected) => {
+        //     HandleEvent ('measure_tool_activated', isSelected ? 'on' : 'off');
+        //     this.navigator.SetSelection (null);
+        //     this.measureTool.SetActive (isSelected);
+        // });
+        // this.measureTool.SetButton (measureToolButton);
+        // AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
+        // AddButton (this.toolbar, 'download', 'Download', ['only_full_width', 'only_on_model'], () => {
+        //     HandleEvent ('model_downloaded', '');
+        //     let importer = this.modelLoaderUI.GetImporter ();
+        //     DownloadModel (importer);
+        // });
+        // AddButton (this.toolbar, 'export', 'Export', ['only_full_width', 'only_on_model'], () => {
+        //     ShowExportDialog (this.model, this.viewer, {
+        //         isMeshVisible : (meshInstanceId) => {
+        //             return this.navigator.IsMeshVisible (meshInstanceId);
+        //         }
+        //     });
+        // });
+        // AddButton (this.toolbar, 'share', 'Share', ['only_full_width', 'only_on_model'], () => {
+        //     ShowSharingDialog (importer.GetFileList (), this.settings, this.viewer);
+        // });
+        // AddSeparator (this.toolbar, ['only_full_width', 'only_on_model']);
+        // AddButton (this.toolbar, 'snapshot', 'Create snapshot', ['only_full_width', 'only_on_model'], () => {
+        //     ShowSnapshotDialog (this.viewer);
+        // });
 
         EnumeratePlugins (PluginType.Toolbar, (plugin) => {
             plugin.registerButtons ({

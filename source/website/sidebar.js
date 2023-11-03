@@ -1,7 +1,7 @@
 import { GetDomElementOuterWidth, SetDomElementOuterHeight, SetDomElementOuterWidth } from '../engine/viewer/domutils.js';
 import { PanelSet } from './panelset.js';
 import { SidebarDetailsPanel } from './sidebardetailspanel.js';
-import { SidebarSettingsPanel } from './sidebarsettingspanel.js';
+// import { SidebarSettingsPanel } from './sidebarsettingspanel.js';
 
 export class Sidebar
 {
@@ -11,10 +11,10 @@ export class Sidebar
         this.panelSet = new PanelSet (mainDiv);
 
         this.detailsPanel = new SidebarDetailsPanel (this.panelSet.GetContentDiv ());
-        this.settingsPanel = new SidebarSettingsPanel (this.panelSet.GetContentDiv (), settings);
+        // this.settingsPanel = new SidebarSettingsPanel (this.panelSet.GetContentDiv (), settings);
 
         this.panelSet.AddPanel (this.detailsPanel);
-        this.panelSet.AddPanel (this.settingsPanel);
+        // this.panelSet.AddPanel (this.settingsPanel);
         this.panelSet.ShowPanel (this.detailsPanel);
     }
 
@@ -41,40 +41,40 @@ export class Sidebar
             }
         });
 
-        this.settingsPanel.Init ({
-            getShadingType : () => {
-                return this.callbacks.getShadingType ();
-            },
-            getProjectionMode : () => {
-                return this.callbacks.getProjectionMode ();
-            },
-            hasDefaultMaterial : () => {
-                return this.callbacks.hasDefaultMaterial ();
-            },
-            onEnvironmentMapChanged : () => {
-                this.callbacks.onEnvironmentMapChanged ();
-            },
-            onBackgroundColorChanged : () => {
-                this.callbacks.onBackgroundColorChanged ();
-            },
-            onDefaultColorChanged : () => {
-                this.callbacks.onDefaultColorChanged ();
-            },
-            onEdgeDisplayChanged : () => {
-                this.callbacks.onEdgeDisplayChanged ();
-            }
-        });
+        // this.settingsPanel.Init ({
+        //     getShadingType : () => {
+        //         return this.callbacks.getShadingType ();
+        //     },
+        //     getProjectionMode : () => {
+        //         return this.callbacks.getProjectionMode ();
+        //     },
+        //     hasDefaultMaterial : () => {
+        //         return this.callbacks.hasDefaultMaterial ();
+        //     },
+        //     onEnvironmentMapChanged : () => {
+        //         this.callbacks.onEnvironmentMapChanged ();
+        //     },
+        //     onBackgroundColorChanged : () => {
+        //         this.callbacks.onBackgroundColorChanged ();
+        //     },
+        //     onDefaultColorChanged : () => {
+        //         this.callbacks.onDefaultColorChanged ();
+        //     },
+        //     onEdgeDisplayChanged : () => {
+        //         this.callbacks.onEdgeDisplayChanged ();
+        //     }
+        // });
     }
 
-    UpdateControlsStatus ()
-    {
-        this.settingsPanel.UpdateControlsStatus ();
-    }
+    // UpdateControlsStatus ()
+    // {
+    //     this.settingsPanel.UpdateControlsStatus ();
+    // }
 
-    UpdateControlsVisibility ()
-    {
-        this.settingsPanel.UpdateControlsVisibility ();
-    }
+    // UpdateControlsVisibility ()
+    // {
+    //     this.settingsPanel.UpdateControlsVisibility ();
+    // }
 
     Resize (height)
     {

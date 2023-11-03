@@ -1,5 +1,7 @@
 {
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true
+    "files.trimFinalNewlines": true,
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/45395858-d6e4-4876-b4b7-532007653e64/resourceGroups/3dOnlineViewer-Clooned/providers/Microsoft.Web/sites/3dOnlineViewer-Clooned",
+    "appService.deploySubpath": "."
 }
