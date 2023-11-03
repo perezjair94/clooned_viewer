@@ -956,7 +956,7 @@ export class Website
 
     InitCookieConsent ()
     {
-        let accepted = CookieGetBoolVal ('ov_cookie_consent', false);
+        let accepted = CookieGetBoolVal ('ov_cookie_consent', true);
         if (accepted) {
             return;
         }
